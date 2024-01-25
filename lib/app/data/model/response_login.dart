@@ -1,45 +1,45 @@
 /// status : 200
 /// message : "Login Success"
-/// DataLoginLoginLogin : {"id":1,"username":"testing","nama":"Romli","telp":"085334","alamat":"Solo","role":"PETUGAS","created_at":"2024-01-09T01:55:16.000000Z","updated_at":"2024-01-09T01:55:16.000000Z"}
+/// data : {"id":2,"username":"said","nama":"said","telp":"085","alamat":"alamat","role":"PEMINJAM","created_at":"2024-01-09T10:00:57.000000Z","updated_at":"2024-01-09T10:00:57.000000Z"}
 
 class ResponseLogin {
   ResponseLogin({
       this.status, 
       this.message, 
-      this.DataLoginLoginLogin,});
+      this.data,});
 
   ResponseLogin.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
-    DataLoginLoginLogin = json['DataLoginLoginLogin'] != null ? DataLoginLogin.fromJson(json['DataLoginLoginLogin']) : null;
+    data = json['data'] != null ? DataLogin.fromJson(json['data']) : null;
   }
   int? status;
   String? message;
-  DataLoginLogin? DataLoginLoginLogin;
+  DataLogin? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-    if (DataLoginLoginLogin != null) {
-      map['DataLoginLoginLogin'] = DataLoginLoginLogin?.toJson();
+    if (data != null) {
+      map['data'] = data?.toJson();
     }
     return map;
   }
 
 }
 
-/// id : 1
-/// username : "testing"
-/// nama : "Romli"
-/// telp : "085334"
-/// alamat : "Solo"
-/// role : "PETUGAS"
-/// created_at : "2024-01-09T01:55:16.000000Z"
-/// updated_at : "2024-01-09T01:55:16.000000Z"
+/// id : 2
+/// username : "said"
+/// nama : "said"
+/// telp : "085"
+/// alamat : "alamat"
+/// role : "PEMINJAM"
+/// created_at : "2024-01-09T10:00:57.000000Z"
+/// updated_at : "2024-01-09T10:00:57.000000Z"
 
-class DataLoginLogin {
-  DataLoginLogin({
+class DataLogin {
+  DataLogin({
       this.id, 
       this.username, 
       this.nama, 
@@ -49,7 +49,7 @@ class DataLoginLogin {
       this.createdAt, 
       this.updatedAt,});
 
-  DataLoginLogin.fromJson(dynamic json) {
+  DataLogin.fromJson(dynamic json) {
     id = json['id'];
     username = json['username'];
     nama = json['nama'];

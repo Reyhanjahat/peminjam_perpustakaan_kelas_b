@@ -42,7 +42,7 @@ class LoginView extends GetView<LoginController> {
               Obx(() => controller.loading.value?
               CircularProgressIndicator():
               ElevatedButton(onPressed: (){
-                controller.login();
+                controller.loginpost();
               }, child: Text("Login"))
               ),
 

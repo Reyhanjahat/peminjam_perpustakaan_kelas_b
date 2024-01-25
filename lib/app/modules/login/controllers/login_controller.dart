@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:peminjam_perpustakaan_kelas_b/app/data/constant/endpoint.dart';
+import 'package:peminjam_perpustakaan_kelas_b/app/data/model/response_login.dart';
 import 'package:peminjam_perpustakaan_kelas_b/app/data/provider/api_provider.dart';
 import 'package:peminjam_perpustakaan_kelas_b/app/data/provider/storage_provider.dart';
 import 'package:peminjam_perpustakaan_kelas_b/app/routes/app_pages.dart';
@@ -24,19 +25,21 @@ class LoginController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    String status = StorageProvider.read(StorageKey.status);
-    log("status : $status");
-    if(status == "logged"){
-      Get.offAllNamed(Routes.HOME);
-  }}
+  //   String status = StorageProvider.read(StorageKey.status);
+  //   log("status : $status");
+  //   if(status == "logged"){
+  //     Get.offAllNamed(Routes.HOME);
+  // }
+  }
 
   @override
   void onClose() {
     super.onClose();
   }
 
+  void increment() => count.value++;
 
-    void login() async {
+  loginpost() async {
       loading(true);
       try {
         FocusScope.of(Get.context!).unfocus();//ngeclose keyboard
@@ -46,9 +49,13 @@ class LoginController extends GetxController {
               data: dio.FormData.fromMap({
                 "username": usernameController.text.toString(),
                 "password": passwordController.text.toString()
-              }));
+              }
+              )
+          );
           if (response.statusCode == 200) {
-            await StorageProvider.write(StorageKey.status, "Longged");
+            ResponseLogin responseLogin=ResponseLogin.fromJson(response.data);
+            await StorageProvider.write(StorageKey.idUser, responseLogin.data!.id!.toString());
+            await StorageProvider.write(StorageKey.status, "longged" );
             Get.offAllNamed(Routes.HOME);
           } else {
             Get.snackbar("Sorry", "Login Gagal", backgroundColor: Colors.orange);

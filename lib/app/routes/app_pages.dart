@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:peminjam_perpustakaan_kelas_b/app/modules/book/views/add_peminjam/views/add_peminjam_view.dart';
 
+import '../modules/add_peminjam/bindings/add_peminjam_binding.dart';
+import '../modules/add_peminjam/views/add_peminjam_view.dart';
 import '../modules/book/bindings/book_binding.dart';
-import '../modules/book/views/add_peminjam/bindings/add_peminjam_binding.dart';
 import '../modules/book/views/book_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
